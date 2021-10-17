@@ -10,6 +10,9 @@ import store.StoreFactory;
 
 import store.*;
 
+import java.io.IOException;
+import java.util.HashMap;
+
 public class Main {
 	// Initialize the model
 	private static final EClass myStore = StoreFactory.eINSTANCE.eClass();
@@ -17,7 +20,7 @@ public class Main {
 	// Get the factory
 	private static final StoreFactory factory = StoreFactory.eINSTANCE;
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		ResourceSet resourceSet = new ResourceSetImpl();
 		resourceSet.getResourceFactoryRegistry()
 				.getExtensionToFactoryMap()
@@ -26,16 +29,26 @@ public class Main {
 		Resource resource = resourceSet.createResource(URI.createFileURI("src/main/resources/data.json"));
 
 		// Create categories
-		Category c_fruit = factory.createCategory();
-		c_fruit.setId(1);
-		c_fruit.setName("Fruit");
+		Category catFruit = factory.createCategory();
+		catFruit.setId(1);
+		catFruit.setName("Fruit");
 
 		// Create products
-		Product p_peach = factory.createProduct();
-		p_peach.setId(10);
-		p_peach.setCategory(c_fruit);
-		p_peach.setName("Peach");
-		p_peach.setQuantity(10);
+		Product prodPeach = factory.createProduct();
+		prodPeach.setId(10);
+		prodPeach.setCategory(catFruit);
+		prodPeach.setName("Peach");
+		prodPeach.setQuantity(10);
+
+		// Add reference from product to category
+		// prodPeach.getCategory()
+
+		// Add the resourcesresource.getContents().add(catFruit);
+		resource.getContents().add(prodPeach);
+		resource.getContents().add(catFruit);
+		resource.save(null);
+
+
 
 	}
 }
