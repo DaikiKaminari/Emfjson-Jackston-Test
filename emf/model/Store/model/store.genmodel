@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="Store/src-gen" creationIcons="false" editDirectory="/Store.edit/src-gen"
+    editorDirectory="/Store.editor/src-gen" modelPluginID="Store" modelName="Store"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" codeFormatting="true"
+    importerID="org.eclipse.emf.importer.ecore" bundleManifest="false" complianceLevel="5.0"
+    copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>store.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="Store" disposableProviderFactory="true" ecorePackage="store.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="store.ecore#//OrderState">
+      <genEnumLiterals ecoreEnumLiteral="store.ecore#//OrderState/IN_PROCESS"/>
+      <genEnumLiterals ecoreEnumLiteral="store.ecore#//OrderState/SHIPPED"/>
+      <genEnumLiterals ecoreEnumLiteral="store.ecore#//OrderState/RECEIVED"/>
+      <genEnumLiterals ecoreEnumLiteral="store.ecore#//OrderState/SENT_BACK"/>
+    </genEnums>
+    <genClasses ecoreClass="store.ecore#//Category">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute store.ecore#//Category/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute store.ecore#//Category/name"/>
+    </genClasses>
+    <genClasses ecoreClass="store.ecore#//Product">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute store.ecore#//Product/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute store.ecore#//Product/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute store.ecore#//Product/quantity"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference store.ecore#//Product/category"/>
+    </genClasses>
+    <genClasses ecoreClass="store.ecore#//Order">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute store.ecore#//Order/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute store.ecore#//Order/createdAt"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute store.ecore#//Order/totalAmount"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute store.ecore#//Order/state"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference store.ecore#//Order/customer"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference store.ecore#//Order/product"/>
+    </genClasses>
+    <genClasses ecoreClass="store.ecore#//Customer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute store.ecore#//Customer/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute store.ecore#//Customer/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference store.ecore#//Customer/order"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
