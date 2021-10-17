@@ -141,7 +141,7 @@ public interface StorePackage extends EPackage {
 	int PRODUCT__QUANTITY = 2;
 
 	/**
-	 * The feature id for the '<em><b>Category</b></em>' reference.
+	 * The feature id for the '<em><b>Category</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -390,10 +390,10 @@ public interface StorePackage extends EPackage {
 	EAttribute getProduct_Quantity();
 
 	/**
-	 * Returns the meta object for the reference '{@link store.Product#getCategory <em>Category</em>}'.
+	 * Returns the meta object for the containment reference '{@link store.Product#getCategory <em>Category</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Category</em>'.
+	 * @return the meta object for the containment reference '<em>Category</em>'.
 	 * @see store.Product#getCategory()
 	 * @see #getProduct()
 	 * @generated
@@ -613,7 +613,7 @@ public interface StorePackage extends EPackage {
 		EAttribute PRODUCT__QUANTITY = eINSTANCE.getProduct_Quantity();
 
 		/**
-		 * The meta object literal for the '<em><b>Category</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Category</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

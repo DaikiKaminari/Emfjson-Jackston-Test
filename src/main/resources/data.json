@@ -2,13 +2,31 @@
   "eClass" : "http://com/univ-nantes/store#//Product",
   "id" : 10,
   "name" : "Peach",
-  "quantity" : 10.0,
-  "category" : {
-    "eClass" : "http://com/univ-nantes/store#//Category",
-    "$ref" : "1"
-  }
+  "quantity" : 5.0
 }, {
   "eClass" : "http://com/univ-nantes/store#//Category",
   "id" : 1,
   "name" : "Fruit"
+}, {
+  "eClass" : "http://com/univ-nantes/store#//Customer",
+  "id" : 100,
+  "name" : "François",
+  "order" : [ {
+    "eClass" : "http://com/univ-nantes/store#//Order",
+    "$ref" : "1000"
+  } ]
+}, {
+  "eClass" : "http://com/univ-nantes/store#//Order",
+  "id" : 1000,
+  "createdAt" : "2021-10-17T16:13:59",
+  "totalAmount" : 10.0,
+  "state" : "SHIPPED",
+  "customer" : {
+    "eClass" : "http://com/univ-nantes/store#//Customer",
+    "$ref" : "100"
+  },
+  "product" : {
+    "eClass" : "http://com/univ-nantes/store#//Product",
+    "$ref" : "10"
+  }
 } ]

@@ -11,9 +11,13 @@ import store.StoreFactory;
 import store.*;
 
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.Arrays;
+import java.util.Calendar;
 
 public class Main {
+	// Instantiate a calendar
+	private static final Calendar c = Calendar.getInstance();
+
 	// Initialize the model
 	private static final EClass myStore = StoreFactory.eINSTANCE.eClass();
 
@@ -38,17 +42,31 @@ public class Main {
 		prodPeach.setId(10);
 		prodPeach.setCategory(catFruit);
 		prodPeach.setName("Peach");
-		prodPeach.setQuantity(10);
+		prodPeach.setQuantity(5);
 
-		// Add reference from product to category
-		// prodPeach.getCategory()
+		// Create customers
+		Customer cust1 = factory.createCustomer();
+		cust1.setId(100);
+		cust1.setName("François");
 
-		// Add the resourcesresource.getContents().add(catFruit);
-		resource.getContents().add(prodPeach);
-		resource.getContents().add(catFruit);
+		// Create orders
+		Order order1 = factory.createOrder();
+		order1.setCreatedAt(c.getTime());
+		order1.setCustomer(cust1);
+		order1.setId(1000);
+		order1.setState(OrderState.SHIPPED);
+		order1.setProduct(prodPeach);
+		order1.setTotalAmount(10);
+
+
+		// Add the resources
+		resource.getContents().addAll(Arrays.asList(
+				prodPeach,
+				catFruit,
+				cust1,
+				order1
+		));
 		resource.save(null);
-
-
 
 	}
 }

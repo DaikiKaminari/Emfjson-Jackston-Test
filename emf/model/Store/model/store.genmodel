@@ -16,14 +16,13 @@
       <genEnumLiterals ecoreEnumLiteral="store.ecore#//OrderState/SENT_BACK"/>
     </genEnums>
     <genClasses ecoreClass="store.ecore#//Category">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute store.ecore#//Category/id"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute store.ecore#//Category/name"/>
     </genClasses>
     <genClasses ecoreClass="store.ecore#//Product">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute store.ecore#//Product/id"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute store.ecore#//Product/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute store.ecore#//Product/quantity"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference store.ecore#//Product/category"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference store.ecore#//Product/category"/>
     </genClasses>
     <genClasses ecoreClass="store.ecore#//Order">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute store.ecore#//Order/id"/>

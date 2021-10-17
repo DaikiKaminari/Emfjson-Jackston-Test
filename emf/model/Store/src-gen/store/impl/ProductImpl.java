@@ -3,6 +3,7 @@
 package store.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -92,7 +93,7 @@ public class ProductImpl extends MinimalEObjectImpl.Container implements Product
 	protected double quantity = QUANTITY_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getCategory() <em>Category</em>}' reference.
+	 * The cached value of the '{@link #getCategory() <em>Category</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getCategory()
@@ -190,15 +191,6 @@ public class ProductImpl extends MinimalEObjectImpl.Container implements Product
 	 * @generated
 	 */
 	public Category getCategory() {
-		if (category != null && category.eIsProxy()) {
-			InternalEObject oldCategory = (InternalEObject) category;
-			category = (Category) eResolveProxy(oldCategory);
-			if (category != oldCategory) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, StorePackage.PRODUCT__CATEGORY,
-							oldCategory, category));
-			}
-		}
 		return category;
 	}
 
@@ -207,8 +199,18 @@ public class ProductImpl extends MinimalEObjectImpl.Container implements Product
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Category basicGetCategory() {
-		return category;
+	public NotificationChain basicSetCategory(Category newCategory, NotificationChain msgs) {
+		Category oldCategory = category;
+		category = newCategory;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					StorePackage.PRODUCT__CATEGORY, oldCategory, newCategory);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -217,11 +219,34 @@ public class ProductImpl extends MinimalEObjectImpl.Container implements Product
 	 * @generated
 	 */
 	public void setCategory(Category newCategory) {
-		Category oldCategory = category;
-		category = newCategory;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, StorePackage.PRODUCT__CATEGORY, oldCategory,
-					category));
+		if (newCategory != category) {
+			NotificationChain msgs = null;
+			if (category != null)
+				msgs = ((InternalEObject) category).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - StorePackage.PRODUCT__CATEGORY, null, msgs);
+			if (newCategory != null)
+				msgs = ((InternalEObject) newCategory).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - StorePackage.PRODUCT__CATEGORY, null, msgs);
+			msgs = basicSetCategory(newCategory, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, StorePackage.PRODUCT__CATEGORY, newCategory,
+					newCategory));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case StorePackage.PRODUCT__CATEGORY:
+			return basicSetCategory(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -239,9 +264,7 @@ public class ProductImpl extends MinimalEObjectImpl.Container implements Product
 		case StorePackage.PRODUCT__QUANTITY:
 			return getQuantity();
 		case StorePackage.PRODUCT__CATEGORY:
-			if (resolve)
-				return getCategory();
-			return basicGetCategory();
+			return getCategory();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
