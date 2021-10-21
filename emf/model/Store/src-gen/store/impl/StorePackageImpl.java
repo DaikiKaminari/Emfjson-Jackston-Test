@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import store.Category;
 import store.Customer;
 import store.Order;
+import store.OrderItem;
 import store.OrderState;
 import store.Product;
 import store.StoreFactory;
@@ -52,6 +53,13 @@ public class StorePackageImpl extends EPackageImpl implements StorePackage {
 	 * @generated
 	 */
 	private EClass customerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass orderItemEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -138,7 +146,7 @@ public class StorePackageImpl extends EPackageImpl implements StorePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCategory_Id() {
+	public EAttribute getCategory_Name() {
 		return (EAttribute) categoryEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -147,8 +155,8 @@ public class StorePackageImpl extends EPackageImpl implements StorePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCategory_Name() {
-		return (EAttribute) categoryEClass.getEStructuralFeatures().get(1);
+	public EReference getCategory_Product() {
+		return (EReference) categoryEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -228,7 +236,7 @@ public class StorePackageImpl extends EPackageImpl implements StorePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getOrder_TotalAmount() {
+	public EAttribute getOrder_State() {
 		return (EAttribute) orderEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -237,17 +245,8 @@ public class StorePackageImpl extends EPackageImpl implements StorePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getOrder_State() {
-		return (EAttribute) orderEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getOrder_Customer() {
-		return (EReference) orderEClass.getEStructuralFeatures().get(4);
+		return (EReference) orderEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -255,8 +254,8 @@ public class StorePackageImpl extends EPackageImpl implements StorePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOrder_Product() {
-		return (EReference) orderEClass.getEStructuralFeatures().get(5);
+	public EReference getOrder_Orderitem() {
+		return (EReference) orderEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -300,6 +299,33 @@ public class StorePackageImpl extends EPackageImpl implements StorePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getOrderItem() {
+		return orderItemEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getOrderItem_Quantity() {
+		return (EAttribute) orderItemEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getOrderItem_Product() {
+		return (EReference) orderItemEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getOrderState() {
 		return orderStateEEnum;
 	}
@@ -334,8 +360,8 @@ public class StorePackageImpl extends EPackageImpl implements StorePackage {
 
 		// Create classes and their features
 		categoryEClass = createEClass(CATEGORY);
-		createEAttribute(categoryEClass, CATEGORY__ID);
 		createEAttribute(categoryEClass, CATEGORY__NAME);
+		createEReference(categoryEClass, CATEGORY__PRODUCT);
 
 		productEClass = createEClass(PRODUCT);
 		createEAttribute(productEClass, PRODUCT__ID);
@@ -346,15 +372,18 @@ public class StorePackageImpl extends EPackageImpl implements StorePackage {
 		orderEClass = createEClass(ORDER);
 		createEAttribute(orderEClass, ORDER__ID);
 		createEAttribute(orderEClass, ORDER__CREATED_AT);
-		createEAttribute(orderEClass, ORDER__TOTAL_AMOUNT);
 		createEAttribute(orderEClass, ORDER__STATE);
 		createEReference(orderEClass, ORDER__CUSTOMER);
-		createEReference(orderEClass, ORDER__PRODUCT);
+		createEReference(orderEClass, ORDER__ORDERITEM);
 
 		customerEClass = createEClass(CUSTOMER);
 		createEAttribute(customerEClass, CUSTOMER__ID);
 		createEAttribute(customerEClass, CUSTOMER__NAME);
 		createEReference(customerEClass, CUSTOMER__ORDER);
+
+		orderItemEClass = createEClass(ORDER_ITEM);
+		createEAttribute(orderItemEClass, ORDER_ITEM__QUANTITY);
+		createEReference(orderItemEClass, ORDER_ITEM__PRODUCT);
 
 		// Create enums
 		orderStateEEnum = createEEnum(ORDER_STATE);
@@ -393,10 +422,11 @@ public class StorePackageImpl extends EPackageImpl implements StorePackage {
 		// Initialize classes, features, and operations; add parameters
 		initEClass(categoryEClass, Category.class, "Category", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getCategory_Id(), ecorePackage.getEInt(), "id", null, 0, 1, Category.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCategory_Name(), ecorePackage.getEString(), "name", null, 0, 1, Category.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCategory_Product(), this.getProduct(), this.getProduct_Category(), "product", null, 0, -1,
+				Category.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(productEClass, Product.class, "Product", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getProduct_Id(), ecorePackage.getEInt(), "id", null, 0, 1, Product.class, !IS_TRANSIENT,
@@ -405,25 +435,23 @@ public class StorePackageImpl extends EPackageImpl implements StorePackage {
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProduct_Quantity(), ecorePackage.getEDouble(), "quantity", null, 0, 1, Product.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getProduct_Category(), this.getCategory(), null, "category", null, 1, 1, Product.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProduct_Category(), this.getCategory(), this.getCategory_Product(), "category", null, 0, 1,
+				Product.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(orderEClass, Order.class, "Order", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getOrder_Id(), ecorePackage.getEInt(), "id", null, 0, 1, Order.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOrder_CreatedAt(), ecorePackage.getEDate(), "createdAt", null, 0, 1, Order.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getOrder_TotalAmount(), ecorePackage.getEDouble(), "totalAmount", null, 0, 1, Order.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOrder_State(), this.getOrderState(), "state", null, 0, 1, Order.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getOrder_Customer(), this.getCustomer(), this.getCustomer_Order(), "customer", null, 1, 1,
 				Order.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOrder_Product(), this.getProduct(), null, "product", null, 1, 1, Order.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
+		initEReference(getOrder_Orderitem(), this.getOrderItem(), null, "orderitem", null, 0, -1, Order.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(customerEClass, Customer.class, "Customer", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -434,6 +462,14 @@ public class StorePackageImpl extends EPackageImpl implements StorePackage {
 		initEReference(getCustomer_Order(), this.getOrder(), this.getOrder_Customer(), "order", null, 0, -1,
 				Customer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(orderItemEClass, OrderItem.class, "OrderItem", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getOrderItem_Quantity(), ecorePackage.getEDouble(), "quantity", null, 0, 1, OrderItem.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOrderItem_Product(), this.getProduct(), null, "product", null, 1, 1, OrderItem.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(orderStateEEnum, OrderState.class, "OrderState");

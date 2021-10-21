@@ -68,22 +68,22 @@ public interface StorePackage extends EPackage {
 	int CATEGORY = 0;
 
 	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CATEGORY__ID = 0;
-
-	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CATEGORY__NAME = 1;
+	int CATEGORY__NAME = 0;
+
+	/**
+	 * The feature id for the '<em><b>Product</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATEGORY__PRODUCT = 1;
 
 	/**
 	 * The number of structural features of the '<em>Category</em>' class.
@@ -141,7 +141,7 @@ public interface StorePackage extends EPackage {
 	int PRODUCT__QUANTITY = 2;
 
 	/**
-	 * The feature id for the '<em><b>Category</b></em>' containment reference.
+	 * The feature id for the '<em><b>Category</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -196,22 +196,13 @@ public interface StorePackage extends EPackage {
 	int ORDER__CREATED_AT = 1;
 
 	/**
-	 * The feature id for the '<em><b>Total Amount</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ORDER__TOTAL_AMOUNT = 2;
-
-	/**
 	 * The feature id for the '<em><b>State</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ORDER__STATE = 3;
+	int ORDER__STATE = 2;
 
 	/**
 	 * The feature id for the '<em><b>Customer</b></em>' reference.
@@ -220,16 +211,16 @@ public interface StorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ORDER__CUSTOMER = 4;
+	int ORDER__CUSTOMER = 3;
 
 	/**
-	 * The feature id for the '<em><b>Product</b></em>' reference.
+	 * The feature id for the '<em><b>Orderitem</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ORDER__PRODUCT = 5;
+	int ORDER__ORDERITEM = 4;
 
 	/**
 	 * The number of structural features of the '<em>Order</em>' class.
@@ -238,7 +229,7 @@ public interface StorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ORDER_FEATURE_COUNT = 6;
+	int ORDER_FEATURE_COUNT = 5;
 
 	/**
 	 * The number of operations of the '<em>Order</em>' class.
@@ -305,6 +296,52 @@ public interface StorePackage extends EPackage {
 	int CUSTOMER_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link store.impl.OrderItemImpl <em>Order Item</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see store.impl.OrderItemImpl
+	 * @see store.impl.StorePackageImpl#getOrderItem()
+	 * @generated
+	 */
+	int ORDER_ITEM = 4;
+
+	/**
+	 * The feature id for the '<em><b>Quantity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORDER_ITEM__QUANTITY = 0;
+
+	/**
+	 * The feature id for the '<em><b>Product</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORDER_ITEM__PRODUCT = 1;
+
+	/**
+	 * The number of structural features of the '<em>Order Item</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORDER_ITEM_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Order Item</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORDER_ITEM_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link store.OrderState <em>Order State</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -312,7 +349,7 @@ public interface StorePackage extends EPackage {
 	 * @see store.impl.StorePackageImpl#getOrderState()
 	 * @generated
 	 */
-	int ORDER_STATE = 4;
+	int ORDER_STATE = 5;
 
 	/**
 	 * Returns the meta object for class '{@link store.Category <em>Category</em>}'.
@@ -325,17 +362,6 @@ public interface StorePackage extends EPackage {
 	EClass getCategory();
 
 	/**
-	 * Returns the meta object for the attribute '{@link store.Category#getId <em>Id</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Id</em>'.
-	 * @see store.Category#getId()
-	 * @see #getCategory()
-	 * @generated
-	 */
-	EAttribute getCategory_Id();
-
-	/**
 	 * Returns the meta object for the attribute '{@link store.Category#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -345,6 +371,17 @@ public interface StorePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getCategory_Name();
+
+	/**
+	 * Returns the meta object for the reference list '{@link store.Category#getProduct <em>Product</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Product</em>'.
+	 * @see store.Category#getProduct()
+	 * @see #getCategory()
+	 * @generated
+	 */
+	EReference getCategory_Product();
 
 	/**
 	 * Returns the meta object for class '{@link store.Product <em>Product</em>}'.
@@ -390,10 +427,10 @@ public interface StorePackage extends EPackage {
 	EAttribute getProduct_Quantity();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link store.Product#getCategory <em>Category</em>}'.
+	 * Returns the meta object for the reference '{@link store.Product#getCategory <em>Category</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Category</em>'.
+	 * @return the meta object for the reference '<em>Category</em>'.
 	 * @see store.Product#getCategory()
 	 * @see #getProduct()
 	 * @generated
@@ -433,17 +470,6 @@ public interface StorePackage extends EPackage {
 	EAttribute getOrder_CreatedAt();
 
 	/**
-	 * Returns the meta object for the attribute '{@link store.Order#getTotalAmount <em>Total Amount</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Total Amount</em>'.
-	 * @see store.Order#getTotalAmount()
-	 * @see #getOrder()
-	 * @generated
-	 */
-	EAttribute getOrder_TotalAmount();
-
-	/**
 	 * Returns the meta object for the attribute '{@link store.Order#getState <em>State</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -466,15 +492,15 @@ public interface StorePackage extends EPackage {
 	EReference getOrder_Customer();
 
 	/**
-	 * Returns the meta object for the reference '{@link store.Order#getProduct <em>Product</em>}'.
+	 * Returns the meta object for the reference list '{@link store.Order#getOrderitem <em>Orderitem</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Product</em>'.
-	 * @see store.Order#getProduct()
+	 * @return the meta object for the reference list '<em>Orderitem</em>'.
+	 * @see store.Order#getOrderitem()
 	 * @see #getOrder()
 	 * @generated
 	 */
-	EReference getOrder_Product();
+	EReference getOrder_Orderitem();
 
 	/**
 	 * Returns the meta object for class '{@link store.Customer <em>Customer</em>}'.
@@ -520,6 +546,38 @@ public interface StorePackage extends EPackage {
 	EReference getCustomer_Order();
 
 	/**
+	 * Returns the meta object for class '{@link store.OrderItem <em>Order Item</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Order Item</em>'.
+	 * @see store.OrderItem
+	 * @generated
+	 */
+	EClass getOrderItem();
+
+	/**
+	 * Returns the meta object for the attribute '{@link store.OrderItem#getQuantity <em>Quantity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Quantity</em>'.
+	 * @see store.OrderItem#getQuantity()
+	 * @see #getOrderItem()
+	 * @generated
+	 */
+	EAttribute getOrderItem_Quantity();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link store.OrderItem#getProduct <em>Product</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Product</em>'.
+	 * @see store.OrderItem#getProduct()
+	 * @see #getOrderItem()
+	 * @generated
+	 */
+	EReference getOrderItem_Product();
+
+	/**
 	 * Returns the meta object for enum '{@link store.OrderState <em>Order State</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -563,20 +621,20 @@ public interface StorePackage extends EPackage {
 		EClass CATEGORY = eINSTANCE.getCategory();
 
 		/**
-		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CATEGORY__ID = eINSTANCE.getCategory_Id();
-
-		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EAttribute CATEGORY__NAME = eINSTANCE.getCategory_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Product</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CATEGORY__PRODUCT = eINSTANCE.getCategory_Product();
 
 		/**
 		 * The meta object literal for the '{@link store.impl.ProductImpl <em>Product</em>}' class.
@@ -613,7 +671,7 @@ public interface StorePackage extends EPackage {
 		EAttribute PRODUCT__QUANTITY = eINSTANCE.getProduct_Quantity();
 
 		/**
-		 * The meta object literal for the '<em><b>Category</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Category</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -647,14 +705,6 @@ public interface StorePackage extends EPackage {
 		EAttribute ORDER__CREATED_AT = eINSTANCE.getOrder_CreatedAt();
 
 		/**
-		 * The meta object literal for the '<em><b>Total Amount</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ORDER__TOTAL_AMOUNT = eINSTANCE.getOrder_TotalAmount();
-
-		/**
 		 * The meta object literal for the '<em><b>State</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -671,12 +721,12 @@ public interface StorePackage extends EPackage {
 		EReference ORDER__CUSTOMER = eINSTANCE.getOrder_Customer();
 
 		/**
-		 * The meta object literal for the '<em><b>Product</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Orderitem</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ORDER__PRODUCT = eINSTANCE.getOrder_Product();
+		EReference ORDER__ORDERITEM = eINSTANCE.getOrder_Orderitem();
 
 		/**
 		 * The meta object literal for the '{@link store.impl.CustomerImpl <em>Customer</em>}' class.
@@ -711,6 +761,32 @@ public interface StorePackage extends EPackage {
 		 * @generated
 		 */
 		EReference CUSTOMER__ORDER = eINSTANCE.getCustomer_Order();
+
+		/**
+		 * The meta object literal for the '{@link store.impl.OrderItemImpl <em>Order Item</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see store.impl.OrderItemImpl
+		 * @see store.impl.StorePackageImpl#getOrderItem()
+		 * @generated
+		 */
+		EClass ORDER_ITEM = eINSTANCE.getOrderItem();
+
+		/**
+		 * The meta object literal for the '<em><b>Quantity</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ORDER_ITEM__QUANTITY = eINSTANCE.getOrderItem_Quantity();
+
+		/**
+		 * The meta object literal for the '<em><b>Product</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ORDER_ITEM__PRODUCT = eINSTANCE.getOrderItem_Product();
 
 		/**
 		 * The meta object literal for the '{@link store.OrderState <em>Order State</em>}' enum.

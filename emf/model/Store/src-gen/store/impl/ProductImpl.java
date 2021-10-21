@@ -93,7 +93,7 @@ public class ProductImpl extends MinimalEObjectImpl.Container implements Product
 	protected double quantity = QUANTITY_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getCategory() <em>Category</em>}' containment reference.
+	 * The cached value of the '{@link #getCategory() <em>Category</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getCategory()
@@ -191,6 +191,24 @@ public class ProductImpl extends MinimalEObjectImpl.Container implements Product
 	 * @generated
 	 */
 	public Category getCategory() {
+		if (category != null && category.eIsProxy()) {
+			InternalEObject oldCategory = (InternalEObject) category;
+			category = (Category) eResolveProxy(oldCategory);
+			if (category != oldCategory) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, StorePackage.PRODUCT__CATEGORY,
+							oldCategory, category));
+			}
+		}
+		return category;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Category basicGetCategory() {
 		return category;
 	}
 
@@ -222,17 +240,34 @@ public class ProductImpl extends MinimalEObjectImpl.Container implements Product
 		if (newCategory != category) {
 			NotificationChain msgs = null;
 			if (category != null)
-				msgs = ((InternalEObject) category).eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE - StorePackage.PRODUCT__CATEGORY, null, msgs);
+				msgs = ((InternalEObject) category).eInverseRemove(this, StorePackage.CATEGORY__PRODUCT, Category.class,
+						msgs);
 			if (newCategory != null)
-				msgs = ((InternalEObject) newCategory).eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE - StorePackage.PRODUCT__CATEGORY, null, msgs);
+				msgs = ((InternalEObject) newCategory).eInverseAdd(this, StorePackage.CATEGORY__PRODUCT, Category.class,
+						msgs);
 			msgs = basicSetCategory(newCategory, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, StorePackage.PRODUCT__CATEGORY, newCategory,
 					newCategory));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case StorePackage.PRODUCT__CATEGORY:
+			if (category != null)
+				msgs = ((InternalEObject) category).eInverseRemove(this, StorePackage.CATEGORY__PRODUCT, Category.class,
+						msgs);
+			return basicSetCategory((Category) otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -264,7 +299,9 @@ public class ProductImpl extends MinimalEObjectImpl.Container implements Product
 		case StorePackage.PRODUCT__QUANTITY:
 			return getQuantity();
 		case StorePackage.PRODUCT__CATEGORY:
-			return getCategory();
+			if (resolve)
+				return getCategory();
+			return basicGetCategory();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

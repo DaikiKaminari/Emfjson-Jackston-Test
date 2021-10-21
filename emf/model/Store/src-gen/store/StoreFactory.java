@@ -58,6 +58,15 @@ public interface StoreFactory extends EFactory {
 	Customer createCustomer();
 
 	/**
+	 * Returns a new object of class '<em>Order Item</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Order Item</em>'.
+	 * @generated
+	 */
+	OrderItem createOrderItem();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

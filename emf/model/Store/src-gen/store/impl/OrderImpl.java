@@ -2,21 +2,22 @@
  */
 package store.impl;
 
+import java.util.Collection;
 import java.util.Date;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import store.Customer;
 import store.Order;
+import store.OrderItem;
 import store.OrderState;
-import store.Product;
 import store.StorePackage;
 
 /**
@@ -29,10 +30,9 @@ import store.StorePackage;
  * <ul>
  *   <li>{@link store.impl.OrderImpl#getId <em>Id</em>}</li>
  *   <li>{@link store.impl.OrderImpl#getCreatedAt <em>Created At</em>}</li>
- *   <li>{@link store.impl.OrderImpl#getTotalAmount <em>Total Amount</em>}</li>
  *   <li>{@link store.impl.OrderImpl#getState <em>State</em>}</li>
  *   <li>{@link store.impl.OrderImpl#getCustomer <em>Customer</em>}</li>
- *   <li>{@link store.impl.OrderImpl#getProduct <em>Product</em>}</li>
+ *   <li>{@link store.impl.OrderImpl#getOrderitem <em>Orderitem</em>}</li>
  * </ul>
  *
  * @generated
@@ -79,26 +79,6 @@ public class OrderImpl extends MinimalEObjectImpl.Container implements Order {
 	protected Date createdAt = CREATED_AT_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getTotalAmount() <em>Total Amount</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTotalAmount()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final double TOTAL_AMOUNT_EDEFAULT = 0.0;
-
-	/**
-	 * The cached value of the '{@link #getTotalAmount() <em>Total Amount</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTotalAmount()
-	 * @generated
-	 * @ordered
-	 */
-	protected double totalAmount = TOTAL_AMOUNT_EDEFAULT;
-
-	/**
 	 * The default value of the '{@link #getState() <em>State</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -129,14 +109,14 @@ public class OrderImpl extends MinimalEObjectImpl.Container implements Order {
 	protected Customer customer;
 
 	/**
-	 * The cached value of the '{@link #getProduct() <em>Product</em>}' reference.
+	 * The cached value of the '{@link #getOrderitem() <em>Orderitem</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getProduct()
+	 * @see #getOrderitem()
 	 * @generated
 	 * @ordered
 	 */
-	protected Product product;
+	protected EList<OrderItem> orderitem;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -198,28 +178,6 @@ public class OrderImpl extends MinimalEObjectImpl.Container implements Order {
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, StorePackage.ORDER__CREATED_AT, oldCreatedAt,
 					createdAt));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public double getTotalAmount() {
-		return totalAmount;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setTotalAmount(double newTotalAmount) {
-		double oldTotalAmount = totalAmount;
-		totalAmount = newTotalAmount;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, StorePackage.ORDER__TOTAL_AMOUNT, oldTotalAmount,
-					totalAmount));
 	}
 
 	/**
@@ -316,38 +274,11 @@ public class OrderImpl extends MinimalEObjectImpl.Container implements Order {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Product getProduct() {
-		if (product != null && product.eIsProxy()) {
-			InternalEObject oldProduct = (InternalEObject) product;
-			product = (Product) eResolveProxy(oldProduct);
-			if (product != oldProduct) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, StorePackage.ORDER__PRODUCT, oldProduct,
-							product));
-			}
+	public EList<OrderItem> getOrderitem() {
+		if (orderitem == null) {
+			orderitem = new EObjectResolvingEList<OrderItem>(OrderItem.class, this, StorePackage.ORDER__ORDERITEM);
 		}
-		return product;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Product basicGetProduct() {
-		return product;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setProduct(Product newProduct) {
-		Product oldProduct = product;
-		product = newProduct;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, StorePackage.ORDER__PRODUCT, oldProduct, product));
+		return orderitem;
 	}
 
 	/**
@@ -393,18 +324,14 @@ public class OrderImpl extends MinimalEObjectImpl.Container implements Order {
 			return getId();
 		case StorePackage.ORDER__CREATED_AT:
 			return getCreatedAt();
-		case StorePackage.ORDER__TOTAL_AMOUNT:
-			return getTotalAmount();
 		case StorePackage.ORDER__STATE:
 			return getState();
 		case StorePackage.ORDER__CUSTOMER:
 			if (resolve)
 				return getCustomer();
 			return basicGetCustomer();
-		case StorePackage.ORDER__PRODUCT:
-			if (resolve)
-				return getProduct();
-			return basicGetProduct();
+		case StorePackage.ORDER__ORDERITEM:
+			return getOrderitem();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -414,6 +341,7 @@ public class OrderImpl extends MinimalEObjectImpl.Container implements Order {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -423,17 +351,15 @@ public class OrderImpl extends MinimalEObjectImpl.Container implements Order {
 		case StorePackage.ORDER__CREATED_AT:
 			setCreatedAt((Date) newValue);
 			return;
-		case StorePackage.ORDER__TOTAL_AMOUNT:
-			setTotalAmount((Double) newValue);
-			return;
 		case StorePackage.ORDER__STATE:
 			setState((OrderState) newValue);
 			return;
 		case StorePackage.ORDER__CUSTOMER:
 			setCustomer((Customer) newValue);
 			return;
-		case StorePackage.ORDER__PRODUCT:
-			setProduct((Product) newValue);
+		case StorePackage.ORDER__ORDERITEM:
+			getOrderitem().clear();
+			getOrderitem().addAll((Collection<? extends OrderItem>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -453,17 +379,14 @@ public class OrderImpl extends MinimalEObjectImpl.Container implements Order {
 		case StorePackage.ORDER__CREATED_AT:
 			setCreatedAt(CREATED_AT_EDEFAULT);
 			return;
-		case StorePackage.ORDER__TOTAL_AMOUNT:
-			setTotalAmount(TOTAL_AMOUNT_EDEFAULT);
-			return;
 		case StorePackage.ORDER__STATE:
 			setState(STATE_EDEFAULT);
 			return;
 		case StorePackage.ORDER__CUSTOMER:
 			setCustomer((Customer) null);
 			return;
-		case StorePackage.ORDER__PRODUCT:
-			setProduct((Product) null);
+		case StorePackage.ORDER__ORDERITEM:
+			getOrderitem().clear();
 			return;
 		}
 		super.eUnset(featureID);
@@ -481,14 +404,12 @@ public class OrderImpl extends MinimalEObjectImpl.Container implements Order {
 			return id != ID_EDEFAULT;
 		case StorePackage.ORDER__CREATED_AT:
 			return CREATED_AT_EDEFAULT == null ? createdAt != null : !CREATED_AT_EDEFAULT.equals(createdAt);
-		case StorePackage.ORDER__TOTAL_AMOUNT:
-			return totalAmount != TOTAL_AMOUNT_EDEFAULT;
 		case StorePackage.ORDER__STATE:
 			return state != STATE_EDEFAULT;
 		case StorePackage.ORDER__CUSTOMER:
 			return customer != null;
-		case StorePackage.ORDER__PRODUCT:
-			return product != null;
+		case StorePackage.ORDER__ORDERITEM:
+			return orderitem != null && !orderitem.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -508,8 +429,6 @@ public class OrderImpl extends MinimalEObjectImpl.Container implements Order {
 		result.append(id);
 		result.append(", createdAt: ");
 		result.append(createdAt);
-		result.append(", totalAmount: ");
-		result.append(totalAmount);
 		result.append(", state: ");
 		result.append(state);
 		result.append(')');

@@ -64,6 +64,8 @@ public class StoreFactoryImpl extends EFactoryImpl implements StoreFactory {
 			return createOrder();
 		case StorePackage.CUSTOMER:
 			return createCustomer();
+		case StorePackage.ORDER_ITEM:
+			return createOrderItem();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -137,6 +139,16 @@ public class StoreFactoryImpl extends EFactoryImpl implements StoreFactory {
 	public Customer createCustomer() {
 		CustomerImpl customer = new CustomerImpl();
 		return customer;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OrderItem createOrderItem() {
+		OrderItemImpl orderItem = new OrderItemImpl();
+		return orderItem;
 	}
 
 	/**

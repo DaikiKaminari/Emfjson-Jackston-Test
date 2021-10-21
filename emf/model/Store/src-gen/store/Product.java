@@ -91,22 +91,24 @@ public interface Product extends EObject {
 	void setQuantity(double value);
 
 	/**
-	 * Returns the value of the '<em><b>Category</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Category</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link store.Category#getProduct <em>Product</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Category</em>' containment reference.
+	 * @return the value of the '<em>Category</em>' reference.
 	 * @see #setCategory(Category)
 	 * @see store.StorePackage#getProduct_Category()
-	 * @model containment="true" required="true"
+	 * @see store.Category#getProduct
+	 * @model opposite="product"
 	 * @generated
 	 */
 	Category getCategory();
 
 	/**
-	 * Sets the value of the '{@link store.Product#getCategory <em>Category</em>}' containment reference.
+	 * Sets the value of the '{@link store.Product#getCategory <em>Category</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Category</em>' containment reference.
+	 * @param value the new value of the '<em>Category</em>' reference.
 	 * @see #getCategory()
 	 * @generated
 	 */

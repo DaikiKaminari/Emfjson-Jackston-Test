@@ -3,7 +3,7 @@
 package store;
 
 import java.util.Date;
-
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -17,10 +17,9 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link store.Order#getId <em>Id</em>}</li>
  *   <li>{@link store.Order#getCreatedAt <em>Created At</em>}</li>
- *   <li>{@link store.Order#getTotalAmount <em>Total Amount</em>}</li>
  *   <li>{@link store.Order#getState <em>State</em>}</li>
  *   <li>{@link store.Order#getCustomer <em>Customer</em>}</li>
- *   <li>{@link store.Order#getProduct <em>Product</em>}</li>
+ *   <li>{@link store.Order#getOrderitem <em>Orderitem</em>}</li>
  * </ul>
  *
  * @see store.StorePackage#getOrder()
@@ -73,28 +72,6 @@ public interface Order extends EObject {
 	void setCreatedAt(Date value);
 
 	/**
-	 * Returns the value of the '<em><b>Total Amount</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Total Amount</em>' attribute.
-	 * @see #setTotalAmount(double)
-	 * @see store.StorePackage#getOrder_TotalAmount()
-	 * @model
-	 * @generated
-	 */
-	double getTotalAmount();
-
-	/**
-	 * Sets the value of the '{@link store.Order#getTotalAmount <em>Total Amount</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Total Amount</em>' attribute.
-	 * @see #getTotalAmount()
-	 * @generated
-	 */
-	void setTotalAmount(double value);
-
-	/**
 	 * Returns the value of the '<em><b>State</b></em>' attribute.
 	 * The literals are from the enumeration {@link store.OrderState}.
 	 * <!-- begin-user-doc -->
@@ -144,25 +121,15 @@ public interface Order extends EObject {
 	void setCustomer(Customer value);
 
 	/**
-	 * Returns the value of the '<em><b>Product</b></em>' reference.
+	 * Returns the value of the '<em><b>Orderitem</b></em>' reference list.
+	 * The list contents are of type {@link store.OrderItem}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Product</em>' reference.
-	 * @see #setProduct(Product)
-	 * @see store.StorePackage#getOrder_Product()
-	 * @model required="true"
+	 * @return the value of the '<em>Orderitem</em>' reference list.
+	 * @see store.StorePackage#getOrder_Orderitem()
+	 * @model
 	 * @generated
 	 */
-	Product getProduct();
-
-	/**
-	 * Sets the value of the '{@link store.Order#getProduct <em>Product</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Product</em>' reference.
-	 * @see #getProduct()
-	 * @generated
-	 */
-	void setProduct(Product value);
+	EList<OrderItem> getOrderitem();
 
 } // Order
