@@ -40,6 +40,7 @@
     <genClasses ecoreClass="store.ecore#//OrderItem">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute store.ecore#//OrderItem/quantity"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference store.ecore#//OrderItem/product"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute store.ecore#//OrderItem/id"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

@@ -324,13 +324,22 @@ public interface StorePackage extends EPackage {
 	int ORDER_ITEM__PRODUCT = 1;
 
 	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORDER_ITEM__ID = 2;
+
+	/**
 	 * The number of structural features of the '<em>Order Item</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ORDER_ITEM_FEATURE_COUNT = 2;
+	int ORDER_ITEM_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>Order Item</em>' class.
@@ -578,6 +587,17 @@ public interface StorePackage extends EPackage {
 	EReference getOrderItem_Product();
 
 	/**
+	 * Returns the meta object for the attribute '{@link store.OrderItem#getId <em>Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Id</em>'.
+	 * @see store.OrderItem#getId()
+	 * @see #getOrderItem()
+	 * @generated
+	 */
+	EAttribute getOrderItem_Id();
+
+	/**
 	 * Returns the meta object for enum '{@link store.OrderState <em>Order State</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -787,6 +807,14 @@ public interface StorePackage extends EPackage {
 		 * @generated
 		 */
 		EReference ORDER_ITEM__PRODUCT = eINSTANCE.getOrderItem_Product();
+
+		/**
+		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ORDER_ITEM__ID = eINSTANCE.getOrderItem_Id();
 
 		/**
 		 * The meta object literal for the '{@link store.OrderState <em>Order State</em>}' enum.

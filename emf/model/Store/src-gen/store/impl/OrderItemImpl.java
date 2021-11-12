@@ -25,6 +25,7 @@ import store.StorePackage;
  * <ul>
  *   <li>{@link store.impl.OrderItemImpl#getQuantity <em>Quantity</em>}</li>
  *   <li>{@link store.impl.OrderItemImpl#getProduct <em>Product</em>}</li>
+ *   <li>{@link store.impl.OrderItemImpl#getId <em>Id</em>}</li>
  * </ul>
  *
  * @generated
@@ -59,6 +60,26 @@ public class OrderItemImpl extends MinimalEObjectImpl.Container implements Order
 	 * @ordered
 	 */
 	protected Product product;
+
+	/**
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getId()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ID_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getId()
+	 * @generated
+	 * @ordered
+	 */
+	protected String id = ID_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -156,6 +177,27 @@ public class OrderItemImpl extends MinimalEObjectImpl.Container implements Order
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getId() {
+		return id;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setId(String newId) {
+		String oldId = id;
+		id = newId;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, StorePackage.ORDER_ITEM__ID, oldId, id));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -177,6 +219,8 @@ public class OrderItemImpl extends MinimalEObjectImpl.Container implements Order
 			return getQuantity();
 		case StorePackage.ORDER_ITEM__PRODUCT:
 			return getProduct();
+		case StorePackage.ORDER_ITEM__ID:
+			return getId();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -194,6 +238,9 @@ public class OrderItemImpl extends MinimalEObjectImpl.Container implements Order
 			return;
 		case StorePackage.ORDER_ITEM__PRODUCT:
 			setProduct((Product) newValue);
+			return;
+		case StorePackage.ORDER_ITEM__ID:
+			setId((String) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -213,6 +260,9 @@ public class OrderItemImpl extends MinimalEObjectImpl.Container implements Order
 		case StorePackage.ORDER_ITEM__PRODUCT:
 			setProduct((Product) null);
 			return;
+		case StorePackage.ORDER_ITEM__ID:
+			setId(ID_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -229,6 +279,8 @@ public class OrderItemImpl extends MinimalEObjectImpl.Container implements Order
 			return quantity != QUANTITY_EDEFAULT;
 		case StorePackage.ORDER_ITEM__PRODUCT:
 			return product != null;
+		case StorePackage.ORDER_ITEM__ID:
+			return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -246,6 +298,8 @@ public class OrderItemImpl extends MinimalEObjectImpl.Container implements Order
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (quantity: ");
 		result.append(quantity);
+		result.append(", id: ");
+		result.append(id);
 		result.append(')');
 		return result.toString();
 	}

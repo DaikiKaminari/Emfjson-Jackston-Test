@@ -1,0 +1,2 @@
+* XMI -> load la resource avec EMF/NeoEMF -> notre-impl-write-json -> load la resource avec emfjson-jackson -> compare les resource avec EMFCompare
+* on load sampleStandard.xmi, on récupère les ressources qui nous intéressent, on les sérialise en json, on les désérialise avec emfjson-jackson, on compare les deux resources avec EMFCompare

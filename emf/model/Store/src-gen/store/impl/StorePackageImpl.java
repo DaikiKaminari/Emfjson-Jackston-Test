@@ -326,6 +326,15 @@ public class StorePackageImpl extends EPackageImpl implements StorePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getOrderItem_Id() {
+		return (EAttribute) orderItemEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getOrderState() {
 		return orderStateEEnum;
 	}
@@ -384,6 +393,7 @@ public class StorePackageImpl extends EPackageImpl implements StorePackage {
 		orderItemEClass = createEClass(ORDER_ITEM);
 		createEAttribute(orderItemEClass, ORDER_ITEM__QUANTITY);
 		createEReference(orderItemEClass, ORDER_ITEM__PRODUCT);
+		createEAttribute(orderItemEClass, ORDER_ITEM__ID);
 
 		// Create enums
 		orderStateEEnum = createEEnum(ORDER_STATE);
@@ -429,7 +439,7 @@ public class StorePackageImpl extends EPackageImpl implements StorePackage {
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(productEClass, Product.class, "Product", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getProduct_Id(), ecorePackage.getEInt(), "id", null, 0, 1, Product.class, !IS_TRANSIENT,
+		initEAttribute(getProduct_Id(), ecorePackage.getEString(), "id", null, 0, 1, Product.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProduct_Name(), ecorePackage.getEString(), "name", null, 0, 1, Product.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -470,6 +480,8 @@ public class StorePackageImpl extends EPackageImpl implements StorePackage {
 		initEReference(getOrderItem_Product(), this.getProduct(), null, "product", null, 1, 1, OrderItem.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOrderItem_Id(), ecorePackage.getEString(), "id", null, 0, 1, OrderItem.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(orderStateEEnum, OrderState.class, "OrderState");

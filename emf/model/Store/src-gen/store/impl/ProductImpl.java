@@ -40,7 +40,7 @@ public class ProductImpl extends MinimalEObjectImpl.Container implements Product
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int ID_EDEFAULT = 0;
+	protected static final String ID_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
@@ -50,7 +50,7 @@ public class ProductImpl extends MinimalEObjectImpl.Container implements Product
 	 * @generated
 	 * @ordered
 	 */
-	protected int id = ID_EDEFAULT;
+	protected String id = ID_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -126,7 +126,7 @@ public class ProductImpl extends MinimalEObjectImpl.Container implements Product
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
@@ -135,8 +135,8 @@ public class ProductImpl extends MinimalEObjectImpl.Container implements Product
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setId(int newId) {
-		int oldId = id;
+	public void setId(String newId) {
+		String oldId = id;
 		id = newId;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, StorePackage.PRODUCT__ID, oldId, id));
@@ -315,7 +315,7 @@ public class ProductImpl extends MinimalEObjectImpl.Container implements Product
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 		case StorePackage.PRODUCT__ID:
-			setId((Integer) newValue);
+			setId((String) newValue);
 			return;
 		case StorePackage.PRODUCT__NAME:
 			setName((String) newValue);
@@ -363,7 +363,7 @@ public class ProductImpl extends MinimalEObjectImpl.Container implements Product
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case StorePackage.PRODUCT__ID:
-			return id != ID_EDEFAULT;
+			return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 		case StorePackage.PRODUCT__NAME:
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		case StorePackage.PRODUCT__QUANTITY:

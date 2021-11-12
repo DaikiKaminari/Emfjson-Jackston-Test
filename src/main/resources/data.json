@@ -1,30 +1,12 @@
 [ {
-  "eClass" : "http://com/univ-nantes/store#//Product",
-  "id" : 10,
-  "name" : "Peach",
-  "quantity" : 5.0,
-  "category" : {
-    "eClass" : "http://com/univ-nantes/store#//Category",
-    "$ref" : "/2"
-  }
-}, {
-  "eClass" : "http://com/univ-nantes/store#//Product",
-  "id" : 11,
-  "name" : "Apple",
-  "quantity" : 20.0,
-  "category" : {
-    "eClass" : "http://com/univ-nantes/store#//Category",
-    "$ref" : "/2"
-  }
-}, {
   "eClass" : "http://com/univ-nantes/store#//Category",
   "name" : "Fruit",
   "product" : [ {
     "eClass" : "http://com/univ-nantes/store#//Product",
-    "$ref" : "10"
+    "$ref" : "/99"
   }, {
     "eClass" : "http://com/univ-nantes/store#//Product",
-    "$ref" : "11"
+    "$ref" : "/99"
   } ]
 }, {
   "eClass" : "http://com/univ-nantes/store#//Customer",
@@ -36,14 +18,34 @@
   } ]
 }, {
   "eClass" : "http://com/univ-nantes/store#//OrderItem",
-  "quantity" : 5.0
+  "quantity" : 5.0,
+  "product" : {
+    "id" : "/99",
+    "name" : "Peach",
+    "quantity" : 5.0,
+    "category" : {
+      "eClass" : "http://com/univ-nantes/store#//Category",
+      "$ref" : "/0"
+    }
+  },
+  "id" : "/1"
 }, {
   "eClass" : "http://com/univ-nantes/store#//OrderItem",
-  "quantity" : 10.0
+  "quantity" : 10.0,
+  "product" : {
+    "id" : "/99",
+    "name" : "Apple",
+    "quantity" : 20.0,
+    "category" : {
+      "eClass" : "http://com/univ-nantes/store#//Category",
+      "$ref" : "/0"
+    }
+  },
+  "id" : "/2"
 }, {
   "eClass" : "http://com/univ-nantes/store#//Order",
   "id" : 1000,
-  "createdAt" : "2021-10-21T19:07:37",
+  "createdAt" : "2021-10-22T11:12:08",
   "state" : "SHIPPED",
   "customer" : {
     "eClass" : "http://com/univ-nantes/store#//Customer",
@@ -51,9 +53,9 @@
   },
   "orderitem" : [ {
     "eClass" : "http://com/univ-nantes/store#//OrderItem",
-    "$ref" : "/4"
+    "$ref" : "/2"
   }, {
     "eClass" : "http://com/univ-nantes/store#//OrderItem",
-    "$ref" : "/5"
+    "$ref" : "/3"
   } ]
 } ]

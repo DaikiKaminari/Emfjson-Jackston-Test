@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link store.OrderItem#getQuantity <em>Quantity</em>}</li>
  *   <li>{@link store.OrderItem#getProduct <em>Product</em>}</li>
+ *   <li>{@link store.OrderItem#getId <em>Id</em>}</li>
  * </ul>
  *
  * @see store.StorePackage#getOrderItem()
@@ -65,5 +66,27 @@ public interface OrderItem extends EObject {
 	 * @generated
 	 */
 	void setProduct(Product value);
+
+	/**
+	 * Returns the value of the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Id</em>' attribute.
+	 * @see #setId(String)
+	 * @see store.StorePackage#getOrderItem_Id()
+	 * @model
+	 * @generated
+	 */
+	String getId();
+
+	/**
+	 * Sets the value of the '{@link store.OrderItem#getId <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Id</em>' attribute.
+	 * @see #getId()
+	 * @generated
+	 */
+	void setId(String value);
 
 } // OrderItem

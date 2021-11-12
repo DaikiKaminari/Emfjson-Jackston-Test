@@ -29,12 +29,12 @@ public interface Product extends EObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Id</em>' attribute.
-	 * @see #setId(int)
+	 * @see #setId(String)
 	 * @see store.StorePackage#getProduct_Id()
 	 * @model id="true"
 	 * @generated
 	 */
-	int getId();
+	String getId();
 
 	/**
 	 * Sets the value of the '{@link store.Product#getId <em>Id</em>}' attribute.
@@ -44,7 +44,7 @@ public interface Product extends EObject {
 	 * @see #getId()
 	 * @generated
 	 */
-	void setId(int value);
+	void setId(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
